@@ -21,7 +21,7 @@ benefits
 - secure
 
 
-HYPERVSOR
+HYPERVISOR 
 TYPE 2 : creating VMs on top of Host OS of the hardware
 h/W -> host os -> hypervisor -> guest os
 eg : virtualbox
@@ -96,3 +96,25 @@ if you want to see the partitions present in your pc
 shortcut coimmand
 ls -l /dev/nvme*
 this will show an output which tells the partitions for each direv
+
+
+
+
+# SSH
+Creating Shell Remotely in a Secure manner
+
+ssh packet
+packet length + padding lenght + payload + padding data + mac
+4 bytes       + 1 byte         +
+
+padding data is random data mixed in with the payload 
+payload is the data
+mac = message authentication code
+
+
+
+# KVM
+Kernal Virtual Machine
+This is a shortcut provided in LINUX to make it virtual machine feel like inbetween type 1 and type 2 hypervisor.
+KVM allows the QEMU or Virtual box to directly access resources without complicating with additional layer of host OS resource allocation.
+

@@ -108,8 +108,50 @@ packet length + padding lenght + payload + padding data + mac
 4 bytes       + 1 byte         +
 
 padding data is random data mixed in with the payload 
-payload is the data
+payload is the data, either pieces of file or full file
 mac = message authentication code
+
+tcp uses the packet length
+the mac is necessary to verify if the message didnt get corrupted. its like a hash, which is used to compare.
+
+
+
+
+# AWK
+text manipulator
+```awk '{print $0}'``` and ```awk '{print}'``` prints all column data.
+```awk '{print $1}'``` prints the first column data alone.
+```awk '{print $NF}'``` prints the last column data alone.
+print usually takes the ' ' as the field separator
+to change and select any delemiter, use the -F flag like ```awk -F ":" '{print $1}'```. this means the : is the delimiter.
+
+you can print multiple columns ```awk '{print $1 $2 $3}'```. if you want spaces between the columns... mention like this.. ```awk '{print $1"\t"$2"\t"$3}'```
+
+this could also be done using 
+``` awk 'BEGIN {FS=":"; OFS="-"} {print $1,$2,$3}'```
+
+
+
+find a particular phrase using expressions
+``` awk -F "/" '/^\// {print $NF}' ```
+what to find is placed between '/--to-find--/'
+^ indicates the start of the line must have a slash
+
+uniq = gets unique list
+sort = sorts the list
+
+
+awk supports math.
+```awk '{print $1 + $2}'```
+
+you can filter using length of text too..
+```awk 'length($1) > 7'```
+takes the value of row in column 1, and checks its length is greater than 7
+
+compare with strings too
+```awk '{ if($NF == "\bin\fish") print $0}'```
+this will find those rows where the last column value has \bin\fish and print them only.
+
 
 
 
@@ -118,3 +160,12 @@ Kernal Virtual Machine
 This is a shortcut provided in LINUX to make it virtual machine feel like inbetween type 1 and type 2 hypervisor.
 KVM allows the QEMU or Virtual box to directly access resources without complicating with additional layer of host OS resource allocation.
 
+
+
+
+
+
+# Resources
+https://www.youtube.com/watch?v=P0QZnAnsQ4c
+https://www.youtube.com/watch?v=dMHFArkANP8
+https://www.youtube.com/watch?v=Dm4_k25PEow

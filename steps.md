@@ -72,3 +72,33 @@ KVM is the linux builtin hypervisor. As its part of the OS, it usually sits in t
 
 If you need KVM back, you don't even have to reboot. You can simply run sudo modprobe kvm_intel (or amd) to reload it, or just restart your computer, and the system will load it back automatically.
 
+
+
+
+
+    Select Debian ISO image as startup disk.
+    When Debian starts, choose Install, not graphcal install.
+    Choose language, geographical & keyboard layout settings.
+    Hostname must be your_login42 (ex. mcombeau42).
+    Domain name leave empty.
+    Choose strong root password & confirm.
+    Create user. your_login works for username & name.
+    Choose password for new user.
+
+
+1. Choose ```Manual``` partitionning.
+2. Choose sda Harddisk - ```SCSI (0,0,0) (sda)``` ...
+3. ```Yes``` create partition table.
+
+We will crete 2 partitions, the first will be for an unencrypted /boot partition, the other for the encrypted logical volumes :
+* ```pri/log xxGB FREE SPACE``` >> ```Create a new partition``` >> ```500 MB``` >> ```Primary``` >> ```Beginning``` >> ```Mount point``` >> ```/boot``` >> ```Done```.
+* ```pri/log xxGB FREE SPACE``` >> ```Create a new partition``` >> ```max``` >> ```Logical``` >> ```Mount point``` >> ```Do not mount it``` >> ```Done```.
+
+### Encrypting disks
+1. ```Configure encrypted volumes``` >> ```Yes```.
+2. ```Create encrypted volumes```
+3. Choose ```sda5``` ONLY to encrypt. We DO NOT want to encrypt the ```sda /boot``` partition.
+4. ```Done``` >> ```Finish``` >> ```Yes```.
+5. ... wait for formatting to finish...
+6. Choose a strong password for disk encryption. DO NOT forget it!
+

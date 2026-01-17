@@ -136,6 +136,7 @@ find a particular phrase using expressions
 ``` awk -F "/" '/^\// {print $NF}' ```
 what to find is placed between '/--to-find--/'
 ^ indicates the start of the line must have a slash
+if you have multiple characters to check... you can do so, by using ```/^[a,b,c]/```. this means check for starting with a, b or c.
 
 uniq = gets unique list
 sort = sorts the list
@@ -152,6 +153,10 @@ compare with strings too
 ```awk '{ if($NF == "\bin\fish") print $0}'```
 this will find those rows where the last column value has \bin\fish and print them only.
 
+you can run loops and create any output
+``` awk 'BEGIN { for(i=1; i<10; i++ ) print "sq of " i , " is ", i*i; }' ```
+
+```for print, substr($0, 4) ``` indicates to print from the 4th character. its not 0 indexed. 4th character is inclusive.
 
 
 
